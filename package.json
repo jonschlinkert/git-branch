@@ -1,7 +1,7 @@
 {
   "name": "git-branch",
   "description": "Get the current branch for a local git repository.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/jonschlinkert/git-branch",
   "author": {
     "name": "Jon Schlinkert",
@@ -21,13 +21,13 @@
     }
   ],
   "keywords": [
-    "docs",
-    "documentation",
-    "generate",
-    "generator",
-    "markdown",
-    "templates",
-    "verb"
+    "git",
+    "gh",
+    "branch",
+    "git branch",
+    "current branch",
+    "repository",
+    "repo"
   ],
   "main": "index.js",
   "engines": {
