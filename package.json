@@ -1,0 +1,45 @@
+{
+  "name": "git-branch",
+  "description": "Get the current branch for a local git repository.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jonschlinkert/git-branch",
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "http://github.com/https://github.com/jonschlinkert/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jonschlinkert/git-branch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/git-branch/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jonschlinkert/git-branch/blob/master/LICENSE-MIT"
+    }
+  ],
+  "keywords": [
+    "docs",
+    "documentation",
+    "generate",
+    "generator",
+    "markdown",
+    "templates",
+    "verb"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.8"
+  },
+  "scripts": {
+    "test": "mocha -R test"
+  },
+  "devDependencies": {
+    "verb": "~0.2.0"
+  },
+  "dependencies": {
+    "shelljs": "~0.2.6"
+  }
+}
