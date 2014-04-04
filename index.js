@@ -7,5 +7,3 @@ const shell = require('shelljs');
 module.exports = shell.exec('git rev-parse --abbrev-ref HEAD', {
   silent: true
 }).output;
-
-console.log(module.exports)
