@@ -1,9 +1,20 @@
-const shell = require('shelljs');
+'use strict';
 
-/**
- * Get the current branch for a local git repository
- */
+var git = require('parse-git-config');
 
-module.exports = shell.exec('git rev-parse --abbrev-ref HEAD', {
-  silent: true
-}).output;
+module.exports = function(cwd) {
+  var config = git.sync(cwd);
+  var branch = null;
+
+  for (var key in config) {
+    if (config.hasOwnProperty(key)) {
+      if (key.indexOf('branch') !== -1) {
+        var segs = key.split(' ');
+        if (segs && segs[1]) {
+          return JSON.parse(segs[1]);
+        }
+      }
+    }
+  }
+  return branch;
+}
