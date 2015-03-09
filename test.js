@@ -12,6 +12,6 @@ var branch = require('./');
 
 describe('git branch', function () {
   it('should return the current git branch:', function () {
-    assert(branch() === 'master');
+    assert(branch.sync() === 'temp');
   });
 });
