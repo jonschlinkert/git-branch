@@ -1,7 +1,7 @@
 {
   "name": "git-branch",
   "description": "Get the current branch for a local git repository.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://github.com/jonschlinkert/git-branch",
   "author": {
     "name": "Jon Schlinkert",
@@ -28,8 +28,8 @@
   "scripts": {
     "test": "mocha"
   },
-  "dependencies": {
-    "parse-git-config": "^0.1.0"
+  "devDependencies": {
+    "mocha": "*"
   },
   "keywords": [
     "git",
