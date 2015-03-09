@@ -15,7 +15,7 @@ function branch(cwd, cb) {
   }
 
   if (typeof cb !== 'function') {
-    throw new TypeError('git-branch async expects a callback function.');
+    throw new TypeError('git-branch expects a callback function.');
   }
 
   read(resolve(cwd), function (err, buffer) {
