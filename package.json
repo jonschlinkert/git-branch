@@ -3,21 +3,12 @@
   "description": "Get the current branch for a local git repository.",
   "version": "0.3.0",
   "homepage": "https://github.com/jonschlinkert/git-branch",
-  "author": {
-    "name": "Jon Schlinkert",
-    "url": "http://github.com/https://github.com/jonschlinkert/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jonschlinkert/git-branch.git"
-  },
+  "author": "Jon Schlinkert (http://github.com/https://github.com/jonschlinkert)",
+  "repository": "jonschlinkert/git-branch",
   "bugs": {
     "url": "https://github.com/jonschlinkert/git-branch/issues"
   },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/jonschlinkert/git-branch/blob/master/LICENSE"
-  },
+  "license": "MIT",
   "files": [
     "index.js"
   ],
@@ -32,12 +23,12 @@
     "mocha": "*"
   },
   "keywords": [
-    "git",
-    "gh",
     "branch",
-    "git branch",
     "current branch",
-    "repository",
-    "repo"
+    "gh",
+    "git",
+    "git branch",
+    "repo",
+    "repository"
   ]
 }
