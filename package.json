@@ -20,7 +20,7 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "mocha": "*"
+    "gulp-format-md": "^0.1.12"
   },
   "keywords": [
     "branch",
@@ -30,5 +30,25 @@
     "git branch",
     "repo",
     "repository"
-  ]
+  ],
+  "verb": {
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "related": {
+      "list": [
+        "git-add-remote",
+        "git-user-name",
+        "github-base"
+      ]
+    },
+    "lint": {
+      "reflinks": true
+    }
+  }
 }
