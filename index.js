@@ -3,58 +3,44 @@
 var fs = require('fs');
 var path = require('path');
 
-/**
- * Expose `config`
- */
-
-module.exports = branch;
-
 function branch(cwd, cb) {
   if (typeof cwd === 'function') {
-    cb = cwd; cwd = null;
+    cb = cwd;
+    cwd = process.cwd();
   }
 
   if (typeof cb !== 'function') {
-    throw new TypeError('git-branch expects a callback function.');
+    throw new TypeError('expected callback to be a function');
   }
 
-  read(resolve(cwd), function (err, buffer) {
+  fs.readFile(gitHeadpath(cwd), function(err, buf) {
     if (err) {
       cb(err);
       return;
     }
-    cb(null, parse(buffer.toString()));
+    cb(null, parseBranches(buf));
   });
 }
 
 branch.sync = function configSync(cwd) {
-  var fp = resolve(cwd);
-  if (!fs.existsSync(fp)) {
-    throw new Error('.git/HEAD does not exist.');
+  var filepath = gitHeadpath(cwd);
+  if (!fs.existsSync(filepath)) {
+    throw new Error('.git/HEAD does not exist');
   }
-  return parse(fs.readFileSync(fp, 'utf8'));
+  return parseBranches(fs.readFileSync(filepath, 'utf8'));
 };
 
-function read(fp, cb) {
-  try {
-    fs.readFile(fp, function (err, config) {
-      if (err) {
-        return cb(err);
-      }
-      cb(null, config);
-    });
-  } catch (err) {
-    cb(err);
-  }
-}
-
-function resolve(cwd) {
+function gitHeadpath(cwd) {
   return path.join(cwd || process.cwd(), '.git/HEAD');
 }
 
-function parse(str) {
-  var re = /ref: refs\/heads\/([^\n]+)/;
-  var match = re.exec(str);
-  if (match) return match[1];
-  return null;
+function parseBranches(str) {
+  var match = /ref: refs\/heads\/([^\n]+)/.exec(String(str));
+  return match && match[1];
 }
+
+/**
+ * Expose `branch`
+ */
+
+module.exports = branch;
