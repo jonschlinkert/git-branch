@@ -1,7 +1,7 @@
 {
   "name": "git-branch",
   "description": "Get the current branch for a local git repository.",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/jonschlinkert/git-branch",
   "author": "Jon Schlinkert (http://github.com/https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/git-branch",
@@ -19,9 +19,6 @@
   "scripts": {
     "test": "mocha"
   },
-  "devDependencies": {
-    "gulp-format-md": "^0.1.12"
-  },
   "keywords": [
     "branch",
     "current branch",
@@ -31,6 +28,9 @@
     "repo",
     "repository"
   ],
+  "devDependencies": {
+    "gulp-format-md": "^0.1.12"
+  },
   "verb": {
     "toc": false,
     "layout": "default",
@@ -42,9 +42,9 @@
     ],
     "related": {
       "list": [
+        "github-base",
         "git-add-remote",
-        "git-user-name",
-        "github-base"
+        "git-user-name"
       ]
     },
     "lint": {
