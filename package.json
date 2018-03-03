@@ -1,7 +1,7 @@
 {
   "name": "git-branch",
   "description": "Get the current branch for a local git repository.",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/jonschlinkert/git-branch",
   "author": "Jon Schlinkert (http://github.com/https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/git-branch",
@@ -14,7 +14,7 @@
   ],
   "main": "index.js",
   "engines": {
-    "node": ">=0.10"
+    "node": ">=0.8"
   },
   "scripts": {
     "test": "mocha"
@@ -29,11 +29,10 @@
     "repository"
   ],
   "dependencies": {
-    "find-up": "^2.1.0"
+    "findup-sync": "^2.0.0"
   },
   "devDependencies": {
-    "gulp-format-md": "^0.1.12",
-    "mocha": "^5.0.1"
+    "gulp-format-md": "^0.1.12"
   },
   "verb": {
     "toc": false,

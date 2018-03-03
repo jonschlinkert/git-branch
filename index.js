@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var findUp = require('find-up');
+var findUp = require('findup-sync');
 
 function branch(cwd, cb) {
   if (typeof cwd === 'function') {
@@ -32,7 +32,7 @@ branch.sync = function configSync(cwd) {
 };
 
 function gitHeadpath(cwd) {
-  return findUp.sync('.git/HEAD', {'cwd': cwd || process.cwd()});
+  return findUp('.git/HEAD', {'cwd': cwd || process.cwd()});
 }
 
 function parseBranches(str) {
