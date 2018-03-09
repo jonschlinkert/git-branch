@@ -14,26 +14,24 @@
   ],
   "main": "index.js",
   "engines": {
-    "node": ">=0.8"
+    "node": ">=6"
   },
   "scripts": {
     "test": "mocha"
   },
-  "keywords": [
-    "branch",
-    "current branch",
-    "gh",
-    "git",
-    "git branch",
-    "repo",
-    "repository"
-  ],
   "dependencies": {
     "findup-sync": "^2.0.0"
   },
   "devDependencies": {
-    "gulp-format-md": "^0.1.12"
+    "gfc": "^2.0.1",
+    "gulp-format-md": "^1.0.0",
+    "mocha": "^3.5.3",
+    "rimraf": "^2.6.2"
   },
+  "keywords": [
+    "branch",
+    "git"
+  ],
   "verb": {
     "toc": false,
     "layout": "default",
@@ -45,9 +43,9 @@
     ],
     "related": {
       "list": [
-        "github-base",
         "git-add-remote",
-        "git-user-name"
+        "git-user-name",
+        "github-base"
       ]
     },
     "lint": {
