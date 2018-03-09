@@ -1,43 +1,41 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var findUp = require('findup-sync');
+const fs = require('fs');
+const util = require('util');
+const find = require('findup-sync');
+const readFile = util.promisify(fs.readFile);
 
-function branch(cwd, cb) {
+function branch(cwd, callback) {
   if (typeof cwd === 'function') {
-    cb = cwd;
-    cwd = process.cwd();
+    callback = cwd;
+    cwd = null;
   }
 
-  if (typeof cb !== 'function') {
-    throw new TypeError('expected callback to be a function');
+  const promise = readFile(gitHeadPath(cwd)).then(buf => parseBranch(buf));
+
+  if (typeof callback === 'function') {
+    promise.then(res => callback(null, res)).catch(callback);
+    return;
   }
 
-  fs.readFile(gitHeadpath(cwd), function(err, buf) {
-    if (err) {
-      cb(err);
-      return;
-    }
-    cb(null, parseBranches(buf));
-  });
+  return promise;
 }
 
-branch.sync = function configSync(cwd) {
-  var filepath = gitHeadpath(cwd);
+branch.sync = function(cwd) {
+  return parseBranch(fs.readFileSync(gitHeadPath(cwd)));
+};
+
+function parseBranch(buf) {
+  const match = /ref: refs\/heads\/([^\n]+)/.exec(buf.toString());
+  return match ? match[1] : null;
+}
+
+function gitHeadPath(cwd) {
+  const filepath = find('.git/HEAD', { cwd: cwd || process.cwd() });
   if (!fs.existsSync(filepath)) {
     throw new Error('.git/HEAD does not exist');
   }
-  return parseBranches(fs.readFileSync(filepath, 'utf8'));
-};
-
-function gitHeadpath(cwd) {
-  return findUp('.git/HEAD', {'cwd': cwd || process.cwd()});
-}
-
-function parseBranches(str) {
-  var match = /ref: refs\/heads\/([^\n]+)/.exec(String(str));
-  return match && match[1];
+  return filepath;
 }
 
 /**
