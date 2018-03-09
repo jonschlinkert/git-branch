@@ -9,6 +9,7 @@
 
 var assert = require('assert');
 var branch = require('./');
+var path = require('path')
 
 describe('git-branch', function() {
   describe('async', function() {
@@ -24,6 +25,16 @@ describe('git-branch', function() {
   describe('sync', function() {
     it('should return the current git branch', function() {
       assert.equal(branch.sync(), 'master');
+    });
+  });
+
+  describe('subdir', function() {
+    it('should return the current git branch from a subdir', function(cb) {
+      branch(path.resolve(__dirname, 'node_modules'), function(err, res) {
+        if (err) return cb(err);
+        assert.equal(res, 'master');
+        cb();
+      });
     });
   });
 });

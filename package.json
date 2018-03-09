@@ -28,9 +28,6 @@
     "repo",
     "repository"
   ],
-  "dependencies": {
-    "findup-sync": "^2.0.0"
-  },
   "devDependencies": {
     "gulp-format-md": "^0.1.12"
   },
