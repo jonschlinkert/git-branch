@@ -24,7 +24,7 @@ Optionally pass the cwd (current working directory) as the first argument.
 
 ```js
 branch('some/path')
-  .then(name => console.log('Branch:', name)) //=> 'master'
+  .then(name => console.log('Branch:', name)) //=> 'Branch: master'
   .catch(console.error);
 ```
 
@@ -33,14 +33,14 @@ branch('some/path')
 ```js
 branch(function(err, name) {
   if (err) throw err;
-  console.log('Branch:', name); //=> 'master'
+  console.log('Branch:', name); //=> 'Branch: master'
 });
 ```
 
 **Sync**
 
 ```js
-console.log('Branch:', branch.sync()); //=> 'master'
+console.log('Branch:', branch.sync()); //=> 'Branch: master'
 ```
 
 ## About
