@@ -32,7 +32,7 @@ function parseBranch(buf) {
 }
 
 function gitHeadPath(cwd) {
-  cwd = cwd || process.cwd()
+  cwd = cwd || process.cwd();
   const filepath = path.join(find(cwd), 'HEAD');
   if (!fs.existsSync(filepath)) {
     throw new Error(`${path.relative(cwd, filepath)} does not exist`);
