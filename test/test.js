@@ -1,18 +1,30 @@
 'use strict';
 
+const cp = require('child_process');
 const gfc = require('gfc');
 const path = require('path');
 const util = require('util');
 const assert = require('assert');
 const rimraf = util.promisify(require('rimraf'));
 const branch = require('..');
-const fixtures = path.join(__dirname, 'fixtures');
+const fixturesBase = path.join(__dirname, 'fixtures');
+const fixtures = path.join(fixturesBase, 'git');
+const worktreeFixtures = path.join(fixturesBase, 'worktree');
 
-const create = async() => await rimraf(fixtures).then(() => gfc(fixtures));
+const exec = util.promisify(cp.exec);
+const createWorktree = async(gitDir) => exec(['git', 'worktree', 'add', '-b', 'some-branch', worktreeFixtures].join(' '), { cwd: gitDir });
+
+const create = async() => {
+  await rimraf(fixturesBase);
+  await gfc(fixtures);
+  await createWorktree(fixtures);
+};
+
+
 
 describe('git-branch', function() {
   beforeEach(() => create());
-  afterEach(() => rimraf(fixtures));
+  afterEach(() => rimraf(fixturesBase));
 
   it('should get branch (sync)', () => assert.equal(branch.sync(fixtures), 'master'));
   it('should get branch (promise)', function() {
@@ -25,4 +37,5 @@ describe('git-branch', function() {
       cb();
     });
   });
+  it('should work with a git worktree', () => assert.strictEqual(branch.sync(worktreeFixtures), 'some-branch'));
 });
