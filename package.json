@@ -20,7 +20,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "findup-sync": "^2.0.0"
+    "find-git-root": "^1.0.4"
   },
   "devDependencies": {
     "gfc": "^2.0.1",

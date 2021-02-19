@@ -2,7 +2,8 @@
 
 const fs = require('fs');
 const util = require('util');
-const find = require('findup-sync');
+const find = require('find-git-root');
+const path = require('path');
 const readFile = util.promisify(fs.readFile);
 
 function branch(cwd, callback) {
@@ -31,9 +32,10 @@ function parseBranch(buf) {
 }
 
 function gitHeadPath(cwd) {
-  const filepath = find('.git/HEAD', { cwd: cwd || process.cwd() });
+  cwd = cwd || process.cwd();
+  const filepath = path.join(find(cwd), 'HEAD');
   if (!fs.existsSync(filepath)) {
-    throw new Error('.git/HEAD does not exist');
+    throw new Error(`${path.relative(cwd, filepath)} does not exist`);
   }
   return filepath;
 }
