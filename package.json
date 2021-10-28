@@ -20,12 +20,12 @@
     "test": "mocha"
   },
   "dependencies": {
-    "findup-sync": "^2.0.0"
+    "findup-sync": "^4.0.0"
   },
   "devDependencies": {
     "gfc": "^2.0.1",
-    "gulp-format-md": "^1.0.0",
-    "mocha": "^3.5.3",
+    "gulp-format-md": "^2.0.0",
+    "mocha": "^9.1.3",
     "rimraf": "^2.6.2"
   },
   "keywords": [
